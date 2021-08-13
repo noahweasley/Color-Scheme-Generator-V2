@@ -1,11 +1,9 @@
 let fBGH, fFGH, fBG, fFG;
 
-fBGH = "";
-fFGH = "";
-fBG = [0, 0, 0];
-fFG = [0, 0, 0];
-
-let canFlip = false;
+fBGH = "#ffffff";
+fFGH = "#000000";
+fBG = [0, 0, 255];
+fFG = [0, 255, 255];
 
 let body = document.getElementsByTagName('body')[0];
 
@@ -28,8 +26,6 @@ change.addEventListener('click', () => {
 })
 
 flip.addEventListener('click', () => {
-    if (!canFlip) return;
-
     // swap colors here
     let [sxh, syh] = swap(fFGH, fBGH);
     fFGH = sxh;
