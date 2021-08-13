@@ -46,9 +46,7 @@ flip.addEventListener('click', () => {
  * @return an array where `x = swap[0]` and `y = swap[1]`
  */
 function swap(x, y) {
-    if (typeof x === typeof y)
-        return [y, x];
-    else return [];
+    return [y, x];
 }
 
 /**
