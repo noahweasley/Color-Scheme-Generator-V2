@@ -1,7 +1,7 @@
-let fBGH = "#ffffff";
-let fFGH = "#000000";
-let fBG = [255, 255, 255];
-let fFG = [0, 0, 0];
+let bgHexString = "#ffffff";
+let fgHexString = "#000000";
+let BGC = [255, 255, 255];
+let FGC = [0, 0, 0];
 
 let body = document.getElementsByTagName('body')[0];
 
@@ -9,30 +9,26 @@ let change = document.getElementById('change');
 let flip = document.getElementById('flip');
 
 change.addEventListener('click', () => {
-    canFlip = true;
-    fBG = generatorRandomColor();
-    fFG = getComplementary(fBG);
+    BGC = generatorRandomColor();
+    FGC = getComplementary(BGC);
 
-    fBGH = convertRGBtoHEX(fBG);
-    fFGH = convertRGBtoHEX(fFG);
+    bgHexString = convertRGBtoHEX(BGC);
+    fgHexString = convertRGBtoHEX(FGC);
 
-    let fgHexString = fFGH;
-    let bgHexString = fBGH;
-    let bg = fBG;
-
-    display(bg, fgHexString, bgHexString);
+    display(BGC, fgHexString, bgHexString);
 })
 
 flip.addEventListener('click', () => {
     // swap colors here
-    let [sxh, syh] = swap(fFGH, fBGH);
-    fFGH = sxh;
-    fBGH = syh;
-    let [sx, sy] = swap(fFG, fBG);
-    fFG = sx;
-    fBG = sy;
+    let [xh, yh] = swap(fgHexString, bgHexString);
+    fgHexString = xh;
+    bgHexString = yh;
 
-    display(fBG, fFGH, fBGH);
+    [xh, yh] = swap(FGC, BGC);
+    FGC = xh;
+    BGC = yh;
+
+    display(BGC, fgHexString, bgHexString);
 })
 
 /**
@@ -129,18 +125,19 @@ function convertRGBtoHEX(colors = [0, 0, 0]) {
  * @returns an array representing the colors
  */
 function generatorRandomColor() {
-    let red = Math.round(Math.random() * 255);
-    let blue = Math.round(Math.random() * 255);
-    let green = Math.round(Math.random() * 255);
+    let red = Math.round(Math.random() * 254);
+    let blue = Math.round(Math.random() * 254);
+    let green = Math.round(Math.random() * 254);
     return [red, blue, green];
 }
 
 /**
- * Checks if a color is dark or light
+ * Checks if a color is dark or light using the HSP color space
  *
  * @param the color in RGB
  */
 function isColorDark(colorValues = [0, 0, 0]) {
+    // R.E: http://alienryderflex.com/hsp.html
     let [red, blue, green] = colorValues;
     let hsp = Math.sqrt(0.299 * Math.pow(red, 2) + 0.587 * Math.pow(green, 2) + 0.114 * Math.pow(blue, 2));
     console.log("hsp: " + hsp);
