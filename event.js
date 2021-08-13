@@ -1,9 +1,7 @@
-let fBGH, fFGH, fBG, fFG;
-
-fBGH = "#ffffff";
-fFGH = "#000000";
-fBG = [0, 0, 255];
-fFG = [0, 255, 255];
+let fBGH = "#ffffff";
+let fFGH = "#000000";
+let fBG = [255, 255, 255];
+let fFG = [0, 0, 0];
 
 let body = document.getElementsByTagName('body')[0];
 
@@ -145,6 +143,7 @@ function generatorRandomColor() {
 function isColorDark(colorValues = [0, 0, 0]) {
     let [red, blue, green] = colorValues;
     let hsp = Math.sqrt(0.299 * Math.pow(red, 2) + 0.587 * Math.pow(green, 2) + 0.114 * Math.pow(blue, 2));
+    console.log("hsp: " + hsp);
     if (hsp > 127.5) return false;
     else return true;
 }
