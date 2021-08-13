@@ -41,6 +41,7 @@ flip.addEventListener('click', () => {
 
 /**
  * swaps two data of same type
+ *
  * @param x the first element
  * @param y the second element
  * @return an array where `x = swap[0]` and `y = swap[1]`
@@ -51,6 +52,7 @@ function swap(x, y) {
 
 /**
  * Displays result to the browser
+ *
  * @param bg the window background color
  * @param fgHexString the foreground Hex string
  * @param bgHexString the background Hex string
@@ -74,6 +76,7 @@ function display(bg, fgHexString, bgHexString) {
 
 /**
  * Retrieves the complementary colors
+ *
  * @param the color to complement
  * @returns the color in RGB
  */
@@ -92,6 +95,7 @@ function getComplementary(colors = [0, 0, 0]) {
 
 /**
  * Convert from RGB color space to corresponding HEX string
+ *
  * @param the RGB color
  */
 function convertRGBtoHEX(colors = [0, 0, 0]) {
@@ -103,6 +107,7 @@ function convertRGBtoHEX(colors = [0, 0, 0]) {
 
 /**
  * Generates a random color in RGB
+ *
  * @returns an array representing the colors
  */
 function generatorRandomColor() {
@@ -114,6 +119,7 @@ function generatorRandomColor() {
 
 /**
  * Checks if a color is dark or light
+ *
  * @param the color in RGB
  */
 function isColorDark(colorValues = [0, 0, 0]) {
