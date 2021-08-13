@@ -17,7 +17,7 @@
     <style>
         * {
             user-select: none;
-            transition-delay: 0.2s;
+            transition-delay: 0.1s;
         }
         
         html,
@@ -34,6 +34,14 @@
             color: blue;
             user-select: text;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        
+        .dark {
+            text-shadow: -2px 2px 3px rgba(255, 255, 255, 0.2);
+        }
+        
+        .light {
+            text-shadow: -2px 2px 3px rgba(0, 0, 0, 0.3);
         }
         
         body {
@@ -62,7 +70,8 @@
             cursor: grab;
             border-radius: 10px;
             background-color: #00ffff;
-            box-shadow: 1px 1px 3px #000000, -1px -1px 3px #ffffff;
+            box-shadow: 1px 1px 3px #000000c0, -1px -1px 3px #ffffffd2;
+            letter-spacing: 2px;
         }
         
         .btn:active {
@@ -72,12 +81,12 @@
 </head>
 
 <body>
-    <p id="bg">Background Color: #00ffff</p>
-    <p id="fg">Foreground Color: #0000ff</p>
-    <p id="di">Dark: false</p>
+    <p class="light" id="bg">Background Color: #00ffff</p>
+    <p class="light" id="fg">Foreground Color: #0000ff</p>
+    <p class="light" id="di">Dark Theme: false</p>
     <div class="container">
-        <button class="btn" id="change">CHANGE</button>
-        <button class="btn" id="flip">FLIP</button>
+        <button class="btn light" id="change">CHANGE</button>
+        <button class="btn light" id="flip">FLIP</button>
     </div>
 
     <script src="event.js"></script>

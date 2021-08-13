@@ -1,7 +1,9 @@
-let fBGH = "",
-    fFGH = "",
-    fBG = [0, 0, 0],
-    fFG = [0, 0, 0];
+let fBGH, fFGH, fBG, fFG;
+
+fBGH = "";
+fFGH = "";
+fBG = [0, 0, 0];
+fFG = [0, 0, 0];
 
 let canFlip = false;
 
@@ -58,17 +60,39 @@ function swap(x, y) {
  * @param bgHexString the background Hex string
  */
 function display(bg, fgHexString, bgHexString) {
+    let isDark = isColorDark(bg);
 
     Array.from(document.getElementsByTagName('p')).forEach(text => {
+
         text.style.color = fgHexString;
         if (text.id === 'fg') text.innerHTML = "Foreground Color: " + fgHexString;
         else if (text.id === 'bg') text.innerHTML = "Background Color: " + bgHexString;
-        else text.innerHTML = "Dark: " + isColorDark(bg);
+        else text.innerHTML = "Dark Theme: " + isDark;
+
+        // elevate text with an opposite color to enable dark-themed colors display properly
+        if (isDark) {
+            text.classList.add("dark");
+            text.classList.remove("light");
+        } else {
+            text.classList.add("light");
+            text.classList.remove("dark");
+        }
+
     })
 
     Array.from(document.getElementsByTagName('button')).forEach(button => {
+
         button.style.backgroundColor = bgHexString;
         button.style.color = fgHexString;
+
+        // elevate text with an opposite color to enable dark-themed colors display properly
+        if (isDark) {
+            button.classList.add("dark");
+            button.classList.remove("light");
+        } else {
+            button.classList.add("light");
+            button.classList.remove("dark");
+        }
     });
 
     body.style.backgroundColor = bgHexString;
