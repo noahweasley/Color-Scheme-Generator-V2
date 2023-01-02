@@ -4,11 +4,11 @@
 
 ### Screenshot on smaller screen sizes
 
-![Small screen sizes](/screenshots/1.png?raw=true)
+![Small screen sizes](/screenshots/screenshot-1.png?raw=true)
 
 ### Screenshot on larger screen sizes
 
-![Large screen sizes](/screenshots/2.png?raw=true)
+![Large screen sizes](/screenshots/screenshot-2.png?raw=true)
 
 ## How to Use
 
