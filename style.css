@@ -27,7 +27,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1em;
-  transition: 0.5s;
 }
 
 p {
@@ -59,7 +58,6 @@ p {
   font-size: 1em;
   background-color: inherit;
   letter-spacing: 2px;
-  transition: 0.5s;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
