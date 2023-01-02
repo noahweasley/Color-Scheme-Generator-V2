@@ -3,60 +3,46 @@ let fgHexString = "#000000";
 let BGC = [255, 255, 255];
 let FGC = [0, 0, 0];
 
-let body = document.getElementsByTagName("body")[0];
+const change = document.documentElement;
 
-let change = document.getElementById("change");
-let flip = document.getElementById("flip");
-let copy = document.getElementById("copy");
+const colorFg = document.getElementById("color-fg");
+const colorBg = document.getElementById("color-bg");
 
-copy.addEventListener("click", () => {
-  copy.innerHTML = "COPIED " + "<i class=\"fas fa-check\">";
-  let toCopy = "";
-  Array.from(document.getElementsByTagName("p")).forEach((text) => {
-    if (text.id === "di") return;
-    toCopy += text.innerText + "\n";
-  });
+const bgCopy = document.getElementById("copy-1");
+const fgCopy = document.getElementById("copy-2");
 
-  navigator.clipboard.writeText(toCopy);
+const darkIndicator1 = document.getElementById("dark-indicator-1");
+const darkIndicator2 = document.getElementById("dark-indicator-2");
+
+const bgColorContainer = document.getElementById("bg");
+const fgColorContainer = document.getElementById("fg");
+
+const bgTexts = Array.from(document.querySelectorAll(".color-container.color-container__first>p"));
+const fgTexts = Array.from(document.querySelectorAll(".color-container.color-container__second>p"));
+
+bgCopy.addEventListener("click", (event) => {
+  event.stopPropagation();
+  bgCopy.innerHTML = "COPIED " + '<i class="fas fa-check">';
+  navigator.clipboard.writeText(bgHexString);
+});
+
+fgCopy.addEventListener("click", (event) => {
+  event.stopPropagation();
+  fgCopy.innerHTML = "COPIED " + '<i class="fas fa-check">';
+  navigator.clipboard.writeText(fgHexString);
 });
 
 change.addEventListener("click", () => {
-  // reset
-  copy.innerText = "COPY";
+  bgCopy.innerText = fgCopy.innerText = "COPY";
+
   BGC = generatorRandomColor();
   FGC = getComplementary(BGC);
 
   bgHexString = convertRGBtoHEX(BGC);
   fgHexString = convertRGBtoHEX(FGC);
 
-  display(BGC, fgHexString, bgHexString);
+  display(FGC, BGC, fgHexString, bgHexString);
 });
-
-flip.addEventListener("click", () => {
-  // reset
-  copy.innerText = "COPY";
-  // swap colors here
-  let [xh, yh] = swap(fgHexString, bgHexString);
-  fgHexString = xh;
-  bgHexString = yh;
-
-  [xh, yh] = swap(FGC, BGC);
-  FGC = xh;
-  BGC = yh;
-
-  display(BGC, fgHexString, bgHexString);
-});
-
-/**
- * swaps two data of any type
- *
- * @param x the first element
- * @param y the second element
- * @return an array where `x = swap[0]` and `y = swap[1]`
- */
-function swap(x, y) {
-  return [y, x];
-}
 
 /**
  * Displays result to the browser
@@ -65,40 +51,61 @@ function swap(x, y) {
  * @param fgHexString the foreground Hex string
  * @param bgHexString the background Hex string
  */
-function display(bg, fgHexString, bgHexString) {
-  let isDark = isColorDark(bg);
+function display(fg, bg, fgHexString, bgHexString) {
+  let isBGDark = isColorDark(bg);
+  let isFGDark = isColorDark(fg);
 
-  Array.from(document.getElementsByTagName("p")).forEach((text) => {
-    text.style.color = fgHexString;
-    if (text.id === "fg") text.innerHTML = "Foreground Color: " + fgHexString;
-    else if (text.id === "bg") text.innerHTML = "Background Color: " + bgHexString;
-    else text.innerHTML = "Dark Theme: " + isDark;
+  fgColorContainer.style.backgroundColor = fgHexString;
+  bgColorContainer.style.backgroundColor = bgHexString;
 
-    // elevate text with an opposite color to enable dark-themed colors display properly
-    if (isDark) {
+  darkIndicator1.innerText = isFGDark ? "[Dark Color]" : "[Light Color]";
+  darkIndicator2.innerText = isBGDark ? "[Dark Color]" : "[Light Color]";
+
+  colorBg.innerText = `Color code: ${bgHexString}`;
+  colorFg.innerText = `Color code: ${fgHexString}`;
+
+  bgTexts.forEach((text) => {
+    if (isBGDark) {
       text.classList.add("dark");
       text.classList.remove("light");
     } else {
       text.classList.add("light");
       text.classList.remove("dark");
     }
+
+    text.style.color = fgHexString;
   });
 
-  Array.from(document.getElementsByTagName("button")).forEach((button) => {
-    button.style.backgroundColor = bgHexString;
-    button.style.color = fgHexString;
-
-    // elevate text with an opposite color to enable dark-themed colors display properly
-    if (isDark) {
-      button.classList.add("dark");
-      button.classList.remove("light");
+  fgTexts.forEach((text) => {
+    if (isFGDark) {
+      text.classList.add("dark");
+      text.classList.remove("light");
     } else {
-      button.classList.add("light");
-      button.classList.remove("dark");
+      text.classList.add("light");
+      text.classList.remove("dark");
     }
+
+    text.style.color = bgHexString;
   });
 
-  body.style.backgroundColor = bgHexString;
+  bgCopy.style.color = fgHexString;
+  fgCopy.style.color = bgHexString;
+
+  if (isBGDark) {
+    bgCopy.classList.add("dark");
+    bgCopy.classList.remove("light");
+  } else {
+    bgCopy.classList.add("light");
+    bgCopy.classList.remove("dark");
+  }
+
+  if (isFGDark) {
+    fgCopy.classList.add("dark");
+    fgCopy.classList.remove("light");
+  } else {
+    fgCopy.classList.add("light");
+    fgCopy.classList.remove("dark");
+  }
 }
 
 /**

@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IEEE | Color Generator</title>
+    <title>IEEE | Color Generator V2</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -18,16 +19,27 @@
 </head>
 
 <body>
-    <p class="light" id="bg">Background Color: #ffffff</p>
-    <p class="light" id="fg">Foreground Color: #000000</p>
-    <p class="light" id="di">Dark Theme: false</p>
-    <div class="container">
-        <button class="btn light" id="change">CHANGE</button>
-        <button class="btn light" id="flip">FLIP</button>
-        <button class="btn light" id="copy">COPY</button>
+
+    <div class="window">
+        
+        <div class="color-container color-container__first" id="bg">
+            <p class="dark" id="color-bg">Color code: #000000</p>
+            <p class="dark" id="dark-indicator-1">[Dark Color]</p>
+            
+            <button class="btn dark" id="copy-1">COPY</button>
+        </div>
+        
+        <div class="color-container color-container__second" id="fg">
+            <p class="light" id="color-fg">Color code: #000000</p>
+            <p class="light" id="dark-indicator-2">[Light Color]</p>
+            
+            <button class="btn light" id="copy-2">COPY</button>
+        </div>
+        
     </div>
 
     <script src="event.js"></script>
+
 </body>
 
 </html>
