@@ -1,12 +1,18 @@
-# ColorGenerator
+# ColorGenerator V2
 
 ## A random color scheme generator
 
-### Screenshots
+### Screenshot on smaller screen sizes
 
-![Dark](/screenshots/1.png?raw=true)
+![Small screen sizes](/screenshots/1.png?raw=true)
 
-![Light](/screenshots/2.png?raw=true)
+### Screenshot on larger screen sizes
 
+![Large screen sizes](/screenshots/2.png?raw=true)
 
-Log-on to https://noahweasley.github.io/ColorGenerator/ to view ColorGenerator
+## How to Use
+
+- Click anywhere inside the browser window and a new random color would be generated
+- Click on 'COPY' to copy the hex code of the equivalent color 
+
+Log-on to https://noahweasley.github.io/Color-Scheme-Generator-V2/ to view ColorGenerator V2
