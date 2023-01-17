@@ -28,7 +28,7 @@ bgCopy.addEventListener("click", (event) => {
 
 fgCopy.addEventListener("click", (event) => {
   event.stopPropagation();
-  fgCopy.innerHTML = "COPIED " + '<i class="fas fa-check">';
+  fgCopy.innerHTML = `COPIED <i class="fas fa-check">`;
   navigator.clipboard.writeText(fgHexString);
 });
 
