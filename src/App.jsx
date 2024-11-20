@@ -1,14 +1,13 @@
-/* eslint-disable react/prop-types */
 import "./App.css";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import {
   getComplementary,
   convertRGBtoHEX,
   generatorRandomColor,
   isColorDark,
 } from "./utils.js";
+
+import ColorContainer from "./components/ColorContainer";
 
 function App() {
   const [bgColor, setBgColor] = useState([255, 255, 255]);
@@ -56,35 +55,6 @@ function App() {
         isDark={isColorDark(fgColor)}
         onCopy={() => handleCopy2(fgHex)}
       />
-    </div>
-  );
-}
-
-function ColorContainer({ fgColor, bgColor, isDark, onCopy, isCopied }) {
-  return (
-    <div
-      className={`color-container ${isDark ? "dark" : "light"}`}
-      style={{ backgroundColor: bgColor }}
-    >
-      <p style={{ color: fgColor }}>Color Code: {bgColor}</p>
-      <p style={{ color: fgColor }}>
-        {isDark ? "[Dark Color]" : "[Light Color]"}
-      </p>
-      <button
-        className={`btn ${isDark ? "dark" : "light"}`}
-        onClick={(e) => {
-          e.stopPropagation();
-          onCopy();
-        }}
-      >
-        {isCopied ? (
-          <>
-            COPIED <FontAwesomeIcon icon={faCheck} />
-          </>
-        ) : (
-          <>COPY</>
-        )}
-      </button>
     </div>
   );
 }
