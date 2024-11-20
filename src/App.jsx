@@ -9,7 +9,7 @@ import {
 
 import ColorContainer from "./components/ColorContainer";
 
-function App() {
+export default function App() {
   const [bgColor, setBgColor] = useState([255, 255, 255]);
   const [fgColor, setFgColor] = useState([0, 0, 0]);
   const [isCopied1, setIsCopy1] = useState(false);
@@ -58,5 +58,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
