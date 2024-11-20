@@ -1,7 +1,7 @@
 <h1 align="center" style="border-bottom: none">
   <div>
     <a href="https://noahweasley.github.io/Color-Scheme-Generator-V2/">
-      <img src="favicon/apple-touch-icon.png" width="80" />
+      <img src="public/apple-touch-icon.png" width="80" />
     </a>
   </div>
    ColorGenerator V2
