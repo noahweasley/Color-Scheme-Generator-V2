@@ -5,9 +5,9 @@ import {
   convertRGBtoHEX,
   generatorRandomColor,
   isColorDark,
-} from "./utils.js";
+} from "../utils/util";
 
-import ColorContainer from "./components/ColorContainer";
+import ColorContainer from "../components/ColorContainer";
 
 export default function App() {
   const [bgColor, setBgColor] = useState([255, 255, 255]);
