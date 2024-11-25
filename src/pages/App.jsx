@@ -1,13 +1,13 @@
-import "./App.css";
+import "../styles/App.css";
 import { useState } from "react";
 import {
   getComplementary,
   convertRGBtoHEX,
   generatorRandomColor,
   isColorDark,
-} from "./utils.js";
+} from "../utils/util";
 
-import ColorContainer from "./components/ColorContainer";
+import ColorContainer from "../components/ColorContainer";
 
 export default function App() {
   const [bgColor, setBgColor] = useState([255, 255, 255]);
